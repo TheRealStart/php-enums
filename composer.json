@@ -1,0 +1,18 @@
+{
+  "name": "the-real-start/enums",
+  "description": "Base enums.",
+  "type": "package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alegz",
+      "email": "alexander.aka.alegz@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TRS\\Enum\\": ""
+    }
+  },
+  "minimum-stability": "stable"
+}

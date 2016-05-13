@@ -5,8 +5,6 @@
  * Time: 3:57 PM
  */
 
-namespace common\enums;
-
 class BaseEnum
 {
     protected static $_enums = array();
@@ -72,23 +70,6 @@ class BaseEnum
             return static::normalizeName($labels[$value]);
         else
             return null;
-    }
-
-    /**
-     * User Friendly - $constValue => Translated $constKey
-     * @static
-     * @param string $scope - Language file
-     * @return array
-     */
-    public static function getEnumsView($scope = 'app')
-    {
-        $class = get_called_class();
-        return array_map(
-            function ($string) use ($scope, $class) {
-                return \Yii::t($scope, $class . '.' . $string);
-            },
-            array_flip(self::getEnums())
-        );
     }
 
     protected static function normalizeName($value)
