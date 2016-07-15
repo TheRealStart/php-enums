@@ -51,16 +51,32 @@ class Enum
     }
 
     /**
+     * @return array
+     */
+    public static function getEnumLabels()
+    {
+        return [];
+    }
+
+    /**
      * Get array where constValue => constName
      * Each constName of result array are normalized
      * @see Enum::normalizeName for more info
+     * @param bool $localized
      * @return array
      */
-    public static function getUiEnums()
+    public static function getUiEnums($localized = true)
     {
-        $data = array_flip(self::getEnums());
-        foreach ($data as &$value)
-            $value = static::normalizeName($value);
+        $data = [];
+
+        if ($localized) $labels = static::getEnumLabels();
+
+        foreach (array_flip(self::getEnums()) as $key => $value)
+            if ($localized && isset($labels[$key]))
+                $data[$key] = static::getEnumLabels()[$key];
+            else
+                $data[$key] = static::normalizeName($value);
+
         return $data;
     }
 
@@ -101,17 +117,21 @@ class Enum
      * ```
      *
      * @param mixed $constValue
-     * @return string|null
+     * @param bool $localized
+     * @return null|string
      */
-    public static function getUiLabel($constValue)
+    public static function getUiLabel($constValue, $localized = true)
     {
         if ($constValue === null)
             return null;
 
         $labels = array_flip(self::getEnums());
 
-        if (isset( $labels[$constValue] ))
-            return static::normalizeName($labels[$constValue]);
+        if (isset($labels[$constValue]))
+            if ($localized && isset(static::getEnumLabels()[$constValue]))
+                return static::getEnumLabels()[$constValue];
+            else
+                return static::normalizeName($labels[$constValue]);
         else
             return null;
     }
