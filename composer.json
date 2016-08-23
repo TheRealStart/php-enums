@@ -1,12 +1,17 @@
 {
   "name": "the-real-start/enums",
-  "description": "Base enums.",
+  "description": "Simple php tool to work with enums",
   "type": "package",
   "license": "MIT",
+  "keywords": ["enum"],
+  "support": {
+    "email": "alegz@therealstart.com",
+    "source": "https://github.com/TheRealStart/php-enums"
+  },
   "authors": [
     {
       "name": "Alegz",
-      "email": "alexander.aka.alegz@gmail.com"
+      "email": "alegz@therealstart.com"
     }
   ],
   "autoload": {
