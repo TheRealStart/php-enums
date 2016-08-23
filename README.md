@@ -36,21 +36,18 @@ $statuses = OrderStatus::getUiEnums();
 
 ```
 ...
-"repositories": [
-		...
-        {
-            "type": "git",
-            "url": "https://git.therealstart.com/sandbox/enums.git"
-        }
-        ...
-    ],
-...
 "require": {
 ...
 	"the-real-start/enums": "*"
 }
 ...
 
+```
+
+Или выполнить следующую команду в командной строке:
+
+```
+composer require the-real-start/enums
 ```
 
 После установки все классы расширения доступны по namespace-у `TRS\Enum`.
